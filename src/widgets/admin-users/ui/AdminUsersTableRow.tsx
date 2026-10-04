@@ -23,7 +23,8 @@ export function AdminUsersTableRow({
   currentUserId,
   onRoleChangeSuccess,
 }: AdminUsersTableRowProps) {
-  const initial = (user.name ?? user.email).charAt(0).toUpperCase()
+  const label = user.name ?? user.username ?? user.telegramId
+  const initial = label.charAt(0).toUpperCase()
 
   return (
     <TableRow>
@@ -40,7 +41,7 @@ export function AdminUsersTableRow({
               href={`/u/${user.username}`}
               className="font-medium hover:underline"
             >
-              {user.name ?? "—"}
+              {user.name ?? user.username}
             </Link>
           ) : (
             <span className="font-medium">{user.name ?? "—"}</span>
@@ -48,12 +49,14 @@ export function AdminUsersTableRow({
         </div>
       </TableCell>
 
-      <TableCell className="text-muted-foreground">{user.email}</TableCell>
+      <TableCell className="font-mono text-xs text-muted-foreground">
+        {user.telegramId}
+      </TableCell>
 
       <TableCell>
         <RoleSelect
           userId={user.id}
-          userLabel={user.name ?? user.email}
+          userLabel={label}
           currentRole={user.role}
           disabled={user.id === currentUserId}
           onSuccess={onRoleChangeSuccess}

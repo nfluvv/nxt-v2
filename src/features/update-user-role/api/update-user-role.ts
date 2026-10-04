@@ -28,7 +28,7 @@ export const updateUserRole = async (
 
   const target = await prisma.user.findUnique({
     where: { id: userId },
-    select: { role: true, email: true },
+    select: { role: true, username: true, telegramId: true },
   })
 
   if (!target) {
@@ -43,7 +43,7 @@ export const updateUserRole = async (
     prisma.roleChangeLog.create({
       data: {
         targetId: userId,
-        targetEmail: target.email ?? "no-email@system.local",
+        targetUsername: target.username ?? target.telegramId,
         changedById: session.user.id,
         fromRole: target.role,
         toRole: role,

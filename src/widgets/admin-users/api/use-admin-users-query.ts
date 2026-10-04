@@ -5,7 +5,7 @@ export type AdminUsersResponse = {
     id: string
     name: string | null
     username: string | null
-    email: string
+    telegramId: string
     image: string | null
     role: "USER" | "ADMIN"
     createdAt: string

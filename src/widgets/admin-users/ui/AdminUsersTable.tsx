@@ -33,7 +33,7 @@ export function AdminUsersTable({
       <TableHeader>
         <TableRow>
           <TableHead>{t("columnUser")}</TableHead>
-          <TableHead>{t("columnEmail")}</TableHead>
+          <TableHead>{t("columnTelegramId")}</TableHead>
           <TableHead>{t("columnRole")}</TableHead>
         </TableRow>
       </TableHeader>

@@ -1,6 +1,6 @@
 import "server-only"
-import { cache } from "react"
 
+import { cache } from "react"
 import { prisma } from "@/shared/server/db/prisma"
 import { auth } from "@/auth"
 
@@ -8,20 +8,16 @@ const PAGE_SIZE = 20
 
 export const getCurrentUser = cache(async () => {
   const session = await auth()
-  if (!session?.user) return null
+  if (!session?.user?.id) return null
 
   return prisma.user.findUnique({
     where: { id: session.user.id },
     select: {
       id: true,
       name: true,
-      email: true,
       image: true,
       username: true,
       role: true,
-      accounts: {
-        select: { provider: true },
-      },
     },
   })
 })
@@ -48,11 +44,14 @@ export const getAllUsers = async ({
   query = "",
   page = 1,
 }: GetAllUsersParams = {}) => {
-  const where = query
+  const q = query.trim()
+
+  const where = q
     ? {
         OR: [
-          { name: { contains: query, mode: "insensitive" as const } },
-          { email: { contains: query, mode: "insensitive" as const } },
+          { name: { contains: q, mode: "insensitive" as const } },
+          { username: { contains: q, mode: "insensitive" as const } },
+          { telegramId: q }, // точное совпадение по Telegram ID
         ],
       }
     : {}
@@ -64,7 +63,7 @@ export const getAllUsers = async ({
         id: true,
         name: true,
         username: true,
-        email: true,
+        telegramId: true,
         image: true,
         role: true,
         createdAt: true,
