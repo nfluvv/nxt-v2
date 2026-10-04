@@ -147,6 +147,7 @@
     "loadError": "Не удалось загрузить пользователей.",
     "columnUser": "Пользователь",
     "columnEmail": "Email",
+    "columnTelegramId": "Telegram ID",
     "columnRole": "Роль",
     "loading": "Загрузка...",
     "empty": "Пользователи не найдены",

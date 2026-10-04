@@ -124,6 +124,7 @@
     "loadError": "Failed to load users.",
     "columnUser": "User",
     "columnEmail": "Email",
+    "columnTelegramId": "Telegram ID",
     "columnRole": "Role",
     "loading": "Loading...",
     "empty": "No users found",
