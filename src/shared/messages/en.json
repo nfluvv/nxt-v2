@@ -1,0 +1,269 @@
+{
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "back": "Back",
+    "email": "Email",
+    "connect": "Connect",
+    "disconnect": "Disconnect",
+    "connected": "Connected",
+    "notConnected": "Not connected",
+    "active": "Active"
+  },
+
+  "Nav": {
+    "home": "Home",
+    "pricing": "Pricing",
+    "about": "About",
+    "menu": "Menu"
+  },
+
+  "dashboard": {
+    "title": "Dashboard",
+    "decription": "Welcome to your dashboard!"
+  },
+
+  "pricing": {
+    "title": "Pricing",
+    "description": "Here you can view our pricing plans and choose the one that best fits your needs."
+  },
+
+  "about": {
+    "title": "About Us",
+    "description": "Learn more about our company and what we do."
+  },
+
+  "loginForm": {
+    "successLogin": "Signed in successfully",
+    "invalidCredentials": "Incorrect email or password",
+    "loginError": "Error signing in",
+    "genericError": "Something went wrong",
+    "invalidCode": "Incorrect code",
+    "verificationEmailSent": "Email sent, check your inbox",
+    "verificationEmailError": "Failed to send the email",
+    "loggingIn": "Signing in..."
+  },
+
+  "validation": {
+    "emailRequired": "Enter your email",
+    "emailInvalid": "Invalid email",
+    "passwordMin": "At least 8 characters",
+    "passwordsMismatch": "Passwords don't match",
+    "nameMin": "At least 2 characters",
+    "nameMax": "Up to 50 characters",
+    "usernameMin": "At least 3 characters",
+    "usernameMax": "Up to 20 characters",
+    "usernameFormat": "Only lowercase letters, digits, and underscores",
+    "codeLength": "The code must be 6 digits",
+    "codeDigitsOnly": "Digits only",
+    "deleteConfirmation": "Enter DELETE to confirm"
+  },
+
+  "authError": {
+    "OAuthAccountNotLinked": "This email is already used with a different sign-in method. Try signing in the way you originally registered.",
+    "OAuthSignin": "Couldn't start sign-in with the provider. Please try again.",
+    "OAuthCallback": "Error handling the provider's response. Please try again.",
+    "AccessDenied": "Couldn't link the account — make sure you're using the same email.",
+    "Verification": "The sign-in link has expired or was already used.",
+    "CredentialsSignin": "Incorrect email or password.",
+    "Configuration": "Server configuration error. Please contact an administrator.",
+    "Default": "Something went wrong while signing in. Please try again.",
+    "emailVerified": "Email verified. Log in to continue."
+  },
+
+  "meta": {
+    "settingsTitle": "Settings",
+    "forbiddenTitle": "Access denied",
+    "adminTitle": "Admin panel",
+    "homeTitle": "Home",
+    "confirmEmailChangeTitle": "Change email",
+    "verifyEmailTitle": "Verify email",
+    "forgotPasswordTitle": "Reset password",
+    "loginTitle": "Log in",
+    "registerTitle": "Sign up",
+    "resetPasswordTitle": "Reset password",
+    "userNotFound": "User not found",
+    "pricingTitle": "Pricing",
+    "aboutTitle": "About",
+    "dashboardTitle": "Dashboard"
+  },
+
+  "Auth": {
+    "login": "Log in",
+    "theLogin": "Log in",
+    "register": "Sign up",
+    "password": "Password",
+    "passwordRepeat": "Repeat password",
+    "toRegister": "Sign up",
+    "toRegisterPending": "Signing up...",
+    "forgotPassword": "Forgot password?",
+    "Name": "Name",
+    "NameExample": "John",
+    "continueWith": "Continue with",
+    "or": "Or",
+    "connectTonWallet": "Connect TON Wallet",
+    "signInWithTon": "Sign in with TON",
+    "tonConnectError": "Failed to connect TON wallet",
+    "tonSignInError": "Failed to sign in with TON",
+    "successLogin": "Successfully logged in",
+    "loginViaTon": "Log In via TON",
+    "connectTon": "Connect your TON wallet",
+    "tonError": "Error logging in via TON"
+  },
+
+  "roleSelect": {
+    "success": "Role updated",
+    "confirmTitle": "Grant administrator access?",
+    "confirmDescription": "The user \"{userLabel}\" will get full access to the admin panel, including managing other users' roles.",
+    "grantAccess": "Grant access"
+  },
+
+  "adminUsers": {
+    "title": "Users",
+    "loadError": "Failed to load users.",
+    "columnUser": "User",
+    "columnEmail": "Email",
+    "columnRole": "Role",
+    "loading": "Loading...",
+    "empty": "No users found",
+    "total": "Total: {total}",
+    "searchPlaceholder": "Search by name or email...",
+    "pagination": "Page {page} of {totalPages}",
+    "next": "Next"
+  },
+
+  "forbidden": {
+    "unauthenticatedTitle": "Sign in required",
+    "unauthenticatedDescription": "You need to log in to access this page.",
+    "unauthenticatedAction": "Log in",
+    "forbiddenTitle": "Access denied",
+    "forbiddenDescription": "You don't have permission to view this page.",
+    "forbiddenAction": "Back home"
+  },
+
+  "errorPage": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. We're already aware of it — try refreshing the page.",
+    "errorId": "Error ID: {digest}",
+    "retry": "Try again",
+    "home": "Back home"
+  },
+
+  "userNotFound": {
+    "title": "User not found",
+    "description": "This account may have been deleted, or the link is incorrect.",
+    "action": "Back home"
+  },
+
+  "userMenu": {
+    "myProfile": "My profile",
+    "settings": "Settings",
+    "signOut": "Sign out",
+    "admin": "Admin"
+  },
+
+  "profile": {
+    "edit": "Edit profile",
+    "memberSince": "Member since"
+  },
+
+  "userSettings": {
+    "title": "Settings",
+    "description": "Manage your profile information and account settings.",
+    "profile": "Profile",
+    "profileDesc": "Your basic profile information.",
+    "uploadAvatar": "Change avatar",
+    "avatarTitle": "Avatar",
+    "avatarDesc": "The image shown on your profile.",
+    "nameTitle": "Name",
+    "nameDesc": "The display name other users will see.",
+    "usernameTitle": "Username",
+    "usernameDesc": "A unique identifier for your profile.",
+    "connectionsTitle": "Connections",
+    "connectionsDesc": "External services linked to your account.",
+    "dangerZoneTitle": "Danger zone",
+    "dangerZoneDesc": "Irreversible actions on your account.",
+    "deleteAccountTitle": "Delete account",
+    "deleteAccountDesc": "This action is irreversible and will permanently delete all your data.",
+    "deleteAccount": "Delete account"
+  },
+
+  "deleteAccount": {
+    "deleteAccountLabel": "Delete account",
+    "deleteAccountTitle": "Delete account permanently?",
+    "deleteAccountDesc": "This action is irreversible. All account data will be permanently deleted.",
+    "confirmationPrefix": "Enter",
+    "confirmationWord": "DELETE",
+    "confirmationSuffix": "to confirm",
+    "password": "Password",
+    "twoFactorCode": "Code from the authenticator app",
+    "totpPlaceholder": "123456",
+    "delete": "Delete permanently",
+    "deletePending": "Deleting...",
+    "success": "Account deleted"
+  },
+
+  "SiteConfig": {
+    "description": "A Next.js starter built with FSD architecture"
+  },
+
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist.",
+    "backHome": "Back home"
+  },
+
+  "Home": {
+    "description": "Next.js + Feature-Sliced Design + Auth.js + Prisma/Postgres + Zod + React Hook Form - everything's set up, start building features.",
+    "register": "Get started",
+    "login": "Log in"
+  },
+
+  "linkProvider": {
+    "link": "Connect",
+    "active": "Active",
+    "unlink": "Disconnect",
+    "unlinkPending": "Disconnecting...",
+    "unlinkTitle": "Disconnect {provider}?",
+    "unlinkDescription": "You will no longer be able to sign in through {provider}. Make sure you have another way to sign in.",
+    "unlinkSuccess": "{provider} disconnected",
+    "linkSuccess": "{provider} linked successfully", 
+  "tonErrors": { 
+    "unauthorized": "Authorization required", 
+    "invalidProof": "Failed to verify wallet ownership", 
+    "walletAlreadyLinked": "This wallet is already linked to another account", 
+    "lastLoginMethod": "Cannot unlink the only available login method" 
+  }
+  },
+
+  "avatarUploader": {
+    "onlyImages": "Only image files can be uploaded",
+    "maxFileSize": "Maximum file size is 2MB",
+    "cloudinaryUploadFailed": "Failed to upload the file to Cloudinary",
+    "updateFailed": "Failed to upload avatar",
+    "success": "Avatar updated",
+    "uploading": "Uploading...",
+    "change": "Change avatar"
+  },
+
+  "updateUsername": {
+    "label": "Username",
+    "placeholder": "john_doe",
+    "success": "Username updated",
+    "saving": "Saving..."
+  },
+
+  "updateName": {
+    "label": "Name",
+    "success": "Name updated",
+    "saving": "Saving..."
+  },
+
+  "themes": {
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System",
+    "toggle": "Change theme"
+  }
+}
