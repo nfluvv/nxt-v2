@@ -4,14 +4,13 @@ import { getCurrentUser } from "@/entities/user/api/queries"
 import { ThemeToggle } from "@/features/toggle-theme"
 import { LanguageSwitcher } from "@/features/switch-locale"
 import { siteConfig } from "@/shared/client/config/site"
-import { buttonVariants, Container } from "@/shared/client/ui"
+import { Container } from "@/shared/client/ui"
 import { getTranslations } from "next-intl/server"
 import { UserMenu } from "./UserMenu"
 import { DesktopNav, MobileNav, type NavItem } from "./HeaderNav"
 
 export async function Header() {
   const user = await getCurrentUser()
-  const t = await getTranslations("Auth")
   const tNav = await getTranslations("Nav")
 
   const navItems: NavItem[] = [
@@ -32,25 +31,15 @@ export async function Header() {
           </Link>
         </div>
 
-
         <DesktopNav items={navItems} />
 
-        <div className="flex items-center justify-self-end gap-1 sm:gap-2">
+        <div className="flex items-center gap-1 justify-self-end sm:gap-2">
           <ThemeToggle />
           <LanguageSwitcher />
 
           <div className="mx-1 h-5 w-px bg-border sm:mx-2" />
 
-          {user ? (
-            <UserMenu user={user} />
-          ) : (
-            <Link
-              href={siteConfig.routes.login}
-              className={buttonVariants({ variant: "ghost", size: "sm" })}
-            >
-              {t("login")}
-            </Link>
-          )}
+          {user && <UserMenu user={user} />}
 
           <MobileNav items={navItems} label={tNav("menu")} />
         </div>

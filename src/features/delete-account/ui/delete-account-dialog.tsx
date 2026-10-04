@@ -32,7 +32,6 @@ import {
 
 import { deleteAccount } from "../api/delete-account"
 
-
 export const DeleteAccountDialog = () => {
   const [open, setOpen] = useState(false)
 

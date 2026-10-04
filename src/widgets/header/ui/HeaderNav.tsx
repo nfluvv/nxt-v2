@@ -78,7 +78,9 @@ export function MobileNav({
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  aria-current={isActive(pathname, item.href) ? "page" : undefined}
+                  aria-current={
+                    isActive(pathname, item.href) ? "page" : undefined
+                  }
                   className="block rounded-md px-3 py-3 text-base font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground aria-[current=page]:text-foreground"
                 >
                   {item.label}

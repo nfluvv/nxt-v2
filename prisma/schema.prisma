@@ -7,15 +7,12 @@ datasource db {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  username      String?   @unique
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  role          Role      @default(USER)
-
-  accounts Account[]
+  id         String  @id @default(cuid())
+  telegramId String  @unique
+  name       String?
+  username   String? @unique
+  image      String?
+  role       Role    @default(USER)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -24,34 +21,14 @@ model User {
   @@map("users")
 }
 
-model Account {
-  id                String  @id @default(cuid())
-  userId            String
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String? @db.Text
-  session_state     String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
-  @@map("accounts")
-}
-
 model RoleChangeLog {
-  id          String   @id @default(cuid())
-  targetId    String
-  targetEmail String
-  changedById String
-  fromRole    Role
-  toRole      Role
-  createdAt   DateTime @default(now())
+  id             String   @id @default(cuid())
+  targetId       String
+  targetUsername String?
+  changedById    String
+  fromRole       Role
+  toRole         Role
+  createdAt      DateTime @default(now())
 
   @@map("role_change_logs")
 }

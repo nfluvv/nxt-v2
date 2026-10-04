@@ -101,9 +101,7 @@ export function UserMenu({ user }: UserMenuProps) {
         <DropdownMenuItem asChild>
           <Link
             href={
-              user.username
-                ? `/u/${user.username}`
-                : siteConfig.routes.settings
+              user.username ? `/u/${user.username}` : siteConfig.routes.settings
             }
           >
             {t("myProfile")}

@@ -45,25 +45,32 @@ This is not just another basic login boilerplate. It is an enterprise-grade foun
 ### 🚀 Production Installation
 
 #### 1. Clone the Architecture
+
 ```bash
 git clone https://github.com/nfluvv/nxt-v1.git
 cd nxt-v1
 ```
 
 #### 2. Bootstrap Package Workspace
+
 ```bash
 npm install
 ```
 
 #### 3. Establish Cryptographic & Environment Environment
+
 Generate your production configuration file:
+
 ```bash
 cp .env.example .env
 ```
+
 Open `.env` and fill the variables: database connection pool string, Auth.js deployment secret, Google/GitHub client IDs, and your active Resend/Cloudinary API endpoints.
 
 #### 4. Sync Database Schema & Primitives
+
 Ensure your PostgreSQL instance is running, then execute:
+
 ```bash
 # Generate type-safe Prisma Client models
 npx prisma generate
@@ -73,14 +80,17 @@ npx prisma migrate dev
 ```
 
 To visually inspect database entries, manage audit logs, or alter user roles manually, boot up the native schema GUI:
+
 ```bash
 npx prisma studio
 ```
 
 #### 5. Spin Up Runtime Engine
+
 ```bash
 npm run dev
 ```
+
 The boilerplate engine boots up instantly at: `http://localhost:3000`
 
 ---
@@ -103,6 +113,7 @@ npx prisma studio
 # Destructive command: Wipes database clean and applies migrations from scratch
 npx prisma migrate reset
 ```
+
 > ⚠️ **Warning:** Running `npx prisma migrate reset` drops all existing tables and truncates data instantly. Never trigger this in staging or production environments.
 
 ---

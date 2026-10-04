@@ -35,11 +35,6 @@ export async function ForbiddenPage({ searchParams }: ForbiddenPageProps) {
         },
       ],
     },
-    forbidden: {
-      title: t("forbiddenTitle"),
-      description: t("forbiddenDescription"),
-      actions: [{ label: t("forbiddenAction"), href: "/", variant: "outline" }],
-    },
   }
 
   const currentReason = reason && MESSAGES[reason] ? reason : "forbidden"

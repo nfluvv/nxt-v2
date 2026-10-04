@@ -33,7 +33,7 @@
     "title": "О нас",
     "description": "Узнайте больше о нашей компании и о том, чем мы занимаемся."
   },
-  
+
   "loginForm": {
     "successLogin": "Успешный вход",
     "invalidCredentials": "Неверный email или пароль",
@@ -71,7 +71,7 @@
     "Default": "Что-то пошло не так при входе. Попробуйте ещё раз.",
     "emailVerified": "Email подтверждён. Войдите, чтобы продолжить."
   },
-  
+
   "meta": {
     "settingsTitle": "Настройки",
     "forbiddenTitle": "Доступ запрещён",
@@ -88,7 +88,6 @@
     "aboutTitle": "О нас",
     "dashboardTitle": "Дашборд"
   },
-
 
   "Auth": {
     "login": "Войти",

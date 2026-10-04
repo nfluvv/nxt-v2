@@ -1,21 +1,14 @@
-import type { NextAuthConfig } from "next-auth";
+import type { NextAuthConfig } from "next-auth"
 
-const PUBLIC_ROUTES = [
-  "/",
-  "/login",
-  "/forbidden",
-  "/about",
-  "/pricing",
-  "/u",
-];
+const PUBLIC_ROUTES = ["/", "/forbidden", "/about", "/pricing", "/u"]
 
 type CheckAuthorizationParams = {
-  isLoggedIn: boolean;
-  role?: "USER" | "ADMIN";
-  pathname: string;
-  locale: string;
-  origin: string;
-};
+  isLoggedIn: boolean
+  role?: "USER" | "ADMIN"
+  pathname: string
+  locale: string
+  origin: string
+}
 
 export function checkAuthorization({
   isLoggedIn,
@@ -25,34 +18,38 @@ export function checkAuthorization({
   origin,
 }: CheckAuthorizationParams): true | Response {
   if (isLoggedIn && pathname === "/") {
-    return Response.redirect(new URL(`/${locale}/dashboard`, origin));
+    return Response.redirect(new URL(`/${locale}/dashboard`, origin))
   }
 
   if (pathname.startsWith("/admin") && role !== "ADMIN") {
-    return Response.redirect(new URL(`/${locale}`, origin));
+    return Response.redirect(new URL(`/${locale}`, origin))
   }
 
-  const isPublicRoute = PUBLIC_ROUTES.some((route) =>
-    pathname === route || pathname.startsWith(`${route}/`)
-  );
+  const isPublicRoute = PUBLIC_ROUTES.some(
+    (route) => pathname === route || pathname.startsWith(`${route}/`)
+  )
 
   if (!isLoggedIn && !isPublicRoute) {
-    return Response.redirect(new URL(`/${locale}`, origin));
+    const url = new URL(`/${locale}`, origin)
+    url.searchParams.set("next", pathname)
+    return Response.redirect(url)
   }
 
-  return true;
+  return true
 }
 
 export const authConfig = {
   pages: {
-    signIn: "/login",
-    error: "/login",
+    signIn: "/",
+    error: "/",
   },
-  session: {
-    strategy: "jwt",
-  },
+  session: { strategy: "jwt" },
   providers: [],
-  callbacks: {
-    authorized: () => true,
+  callbacks: { authorized: () => true },
+  cookies: {
+    sessionToken: {
+      name: "__Secure-authjs.session-token",
+      options: { httpOnly: true, sameSite: "none", secure: true, path: "/" },
+    },
   },
-} satisfies NextAuthConfig;
+} satisfies NextAuthConfig

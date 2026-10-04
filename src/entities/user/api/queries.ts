@@ -20,9 +20,9 @@ export const getCurrentUser = cache(async () => {
       username: true,
       role: true,
       accounts: {
-        select: { provider: true }
-      }
-    }
+        select: { provider: true },
+      },
+    },
   })
 })
 

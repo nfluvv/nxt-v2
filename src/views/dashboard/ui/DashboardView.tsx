@@ -1,5 +1,5 @@
 import { Container } from "@/shared/client/ui"
-import { getTranslations } from "next-intl/server";
+import { getTranslations } from "next-intl/server"
 
 export async function DashboardView() {
   const t = await getTranslations("dashboard")

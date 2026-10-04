@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import { Inter, Manrope } from "next/font/google"
+import Script from "next/script"
 
 import { siteConfig } from "@/shared/client/config/site"
 
@@ -43,6 +44,10 @@ export default async function RootLayout({
       }`}
     >
       <body>{children}</body>
+      <Script
+        src="https://telegram.org/js/telegram-web-app.js"
+        strategy="beforeInteractive"
+      />
     </html>
   )
 }
