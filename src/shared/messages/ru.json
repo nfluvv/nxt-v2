@@ -12,104 +12,17 @@
     "active": "Активен"
   },
 
-  "Nav": {
-    "home": "Главная",
-    "pricing": "Цены",
-    "about": "О нас",
-    "menu": "Меню"
+  "profile": {
+    "lang": "Язык"
+  },
+
+  "nav": {
+    "home": "Главная"
   },
 
   "dashboard": {
     "title": "Дашборд",
     "decription": "Добро пожаловать в ваш дашборд!"
-  },
-
-  "pricing": {
-    "title": "Расценки",
-    "description": "Здесь вы можете ознакомиться с нашими тарифными планами и выбрать подходящий для вас."
-  },
-
-  "about": {
-    "title": "О нас",
-    "description": "Узнайте больше о нашей компании и о том, чем мы занимаемся."
-  },
-
-  "loginForm": {
-    "successLogin": "Успешный вход",
-    "invalidCredentials": "Неверный email или пароль",
-    "loginError": "Ошибка при входе",
-    "genericError": "Что-то пошло не так",
-    "invalidCode": "Неверный код",
-    "verificationEmailSent": "Письмо отправлено, проверьте почту",
-    "verificationEmailError": "Не удалось отправить письмо",
-    "loggingIn": "Входим..."
-  },
-
-  "validation": {
-    "emailRequired": "Введите email",
-    "emailInvalid": "Некорректный email",
-    "passwordMin": "Минимум 8 символов",
-    "passwordsMismatch": "Пароли не совпадают",
-    "nameMin": "Минимум 2 символа",
-    "nameMax": "Максимум 50 символов",
-    "usernameMin": "Минимум 3 символа",
-    "usernameMax": "Максимум 20 символов",
-    "usernameFormat": "Только латиница, цифры и подчёркивание",
-    "codeLength": "Код должен состоять из 6 цифр",
-    "codeDigitsOnly": "Только цифры",
-    "deleteConfirmation": "Введите DELETE для подтверждения"
-  },
-
-  "authError": {
-    "OAuthAccountNotLinked": "Этот email уже используется другим способом входа. Попробуйте войти так, как регистрировались изначально.",
-    "OAuthSignin": "Не удалось начать вход через провайдер. Попробуйте ещё раз.",
-    "OAuthCallback": "Ошибка при обработке ответа от провайдера. Попробуйте ещё раз.",
-    "AccessDenied": "Не удалось привязать аккаунт — убедитесь, что используете тот же email.",
-    "Verification": "Ссылка для входа устарела или уже использована.",
-    "CredentialsSignin": "Неверный email или пароль.",
-    "Configuration": "Ошибка конфигурации сервера. Обратитесь к администратору.",
-    "Default": "Что-то пошло не так при входе. Попробуйте ещё раз.",
-    "emailVerified": "Email подтверждён. Войдите, чтобы продолжить."
-  },
-
-  "meta": {
-    "settingsTitle": "Настройки",
-    "forbiddenTitle": "Доступ запрещён",
-    "adminTitle": "Админ-панель",
-    "homeTitle": "Главная",
-    "confirmEmailChangeTitle": "Изменение почты",
-    "verifyEmailTitle": "Подтверждение почты",
-    "forgotPasswordTitle": "Восстановление пароля",
-    "loginTitle": "Вход",
-    "registerTitle": "Регистрация",
-    "resetPasswordTitle": "Сброс пароля",
-    "userNotFound": "Пользователь не найден",
-    "pricingTitle": "Цены",
-    "aboutTitle": "О нас",
-    "dashboardTitle": "Дашборд"
-  },
-
-  "Auth": {
-    "login": "Войти",
-    "theLogin": "Вход",
-    "register": "Регистрация",
-    "password": "Пароль",
-    "passwordRepeat": "Повторите пароль",
-    "toRegister": "Зарегистрироваться",
-    "toRegisterPending": "Регистрация...",
-    "forgotPassword": "Забыли пароль?",
-    "Name": "Имя",
-    "NameExample": "Иван",
-    "continueWith": "Продолжить через",
-    "or": "Или",
-    "connectTonWallet": "Подключить TON кошелёк",
-    "signInWithTon": "Войти через TON",
-    "tonConnectError": "Не удалось подключить TON кошелёк",
-    "tonSignInError": "Не удалось войти через TON",
-    "successLogin": "Успешный вход",
-    "loginViaTon": "Войти через TON",
-    "connectTon": "Подключить TON кошелек",
-    "tonError": "Ошибка входа через TON"
   },
 
   "forbidden": {
@@ -127,12 +40,6 @@
     "errorId": "ID ошибки: {digest}",
     "retry": "Попробовать снова",
     "home": "На главную"
-  },
-
-  "userNotFound": {
-    "title": "Пользователь не найден",
-    "description": "Возможно, аккаунт был удалён или ссылка неверна.",
-    "action": "На главную"
   },
 
   "roleSelect": {
@@ -157,109 +64,12 @@
     "next": "Вперёд"
   },
 
-  "userMenu": {
-    "myProfile": "Мой профиль",
-    "settings": "Настройки",
-    "signOut": "Выйти",
-    "admin": "Админка"
-  },
-
-  "profile": {
-    "edit": "Редактировать профиль",
-    "memberSince": "На платформе с"
-  },
-
-  "userSettings": {
-    "title": "Настройки",
-    "description": "Управляйте информацией профиля и настройками аккаунта.",
-    "profile": "Профиль",
-    "profileDesc": "Основная информация вашего профиля.",
-    "uploadAvatar": "Изменить аватар",
-    "avatarTitle": "Аватар",
-    "avatarDesc": "Изображение, которое будет отображаться в вашем профиле.",
-    "nameTitle": "Имя",
-    "nameDesc": "Отображаемое имя, которое видят другие пользователи.",
-    "usernameTitle": "Юзернейм",
-    "usernameDesc": "Уникальный идентификатор вашего профиля.",
-    "connectionsTitle": "Подключения",
-    "connectionsDesc": "Внешние сервисы, связанные с вашим аккаунтом.",
-    "dangerZoneTitle": "Опасная зона",
-    "dangerZoneDesc": "Необратимые действия с аккаунтом.",
-    "deleteAccountTitle": "Удаление аккаунта",
-    "deleteAccountDesc": "Это действие необратимо и удалит все ваши данные без возможности восстановления.",
-    "deleteAccount": "Удалить аккаунт"
-  },
-
-  "deleteAccount": {
-    "deleteAccountLabel": "Удалить аккаунт",
-    "deleteAccountTitle": "Удалить аккаунт навсегда?",
-    "deleteAccountDesc": "Это действие необратимо. Все данные аккаунта будут удалены без возможности восстановления.",
-    "confirmationPrefix": "Введите",
-    "confirmationWord": "DELETE",
-    "confirmationSuffix": "для подтверждения",
-    "password": "Пароль",
-    "twoFactorCode": "Код из приложения",
-    "totpPlaceholder": "123456",
-    "delete": "Удалить навсегда",
-    "deletePending": "Удаляем...",
-    "success": "Аккаунт удалён"
-  },
-
-  "SiteConfig": {
-    "description": "Шаблон Next.js на архитектуре FSD"
-  },
-
   "NotFound": {
     "title": "Страница не найдена",
     "description": "Запрашиваемая страница не существует.",
     "backHome": "На главную"
   },
 
-  "Home": {
-    "description": "Next.js + Feature-Sliced Design + Auth.js + Prisma/Postgres + Zod + React Hook Form - всё уже настроено, начинай писать фичи.",
-    "register": "Начать",
-    "login": "Войти"
-  },
-
-  "linkProvider": {
-    "link": "Привязать",
-    "active": "Активен",
-    "unlink": "Отвязать",
-    "unlinkPending": "Отвязываем...",
-    "unlinkTitle": "Отвязать {provider}?",
-    "unlinkDescription": "Вы больше не сможете входить через {provider}. Убедитесь, что у вас остаётся другой способ входа.",
-    "unlinkSuccess": "{provider} отвязан",
-    "linkSuccess": "{provider} привязан",
-    "tonErrors": {
-      "unauthorized": "Необходимо войти в аккаунт",
-      "invalidProof": "Не удалось подтвердить владение кошельком",
-      "walletAlreadyLinked": "Этот кошелёк уже привязан к другому аккаунту",
-      "lastLoginMethod": "Нельзя отвязать единственный способ входа"
-    }
-  },
-
-  "avatarUploader": {
-    "onlyImages": "Можно загружать только изображения",
-    "maxFileSize": "Максимальный размер файла — 2MB",
-    "cloudinaryUploadFailed": "Не удалось загрузить файл в Cloudinary",
-    "updateFailed": "Не удалось загрузить аватар",
-    "success": "Аватар обновлён",
-    "uploading": "Загружаем...",
-    "change": "Изменить аватар"
-  },
-
-  "updateUsername": {
-    "label": "Юзернейм",
-    "placeholder": "john_doe",
-    "success": "Юзернейм обновлён",
-    "saving": "Сохраняем..."
-  },
-
-  "updateName": {
-    "label": "Имя",
-    "success": "Имя обновлено",
-    "saving": "Сохраняем..."
-  },
 
   "themes": {
     "dark": "Тёмная",

@@ -17,10 +17,6 @@ export function checkAuthorization({
   locale,
   origin,
 }: CheckAuthorizationParams): true | Response {
-  if (isLoggedIn && pathname === "/") {
-    return Response.redirect(new URL(`/${locale}/dashboard`, origin))
-  }
-
   if (pathname.startsWith("/admin") && role !== "ADMIN") {
     return Response.redirect(new URL(`/${locale}`, origin))
   }

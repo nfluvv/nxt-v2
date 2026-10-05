@@ -1,6 +1,6 @@
 "use client"
 
-import type { PropsWithChildren } from "react"
+import { Suspense, type PropsWithChildren } from "react"
 
 import { SessionProvider } from "next-auth/react"
 import { Toaster } from "react-hot-toast"
@@ -15,8 +15,12 @@ export function AppProviders({ children }: PropsWithChildren) {
     <ThemeProvider>
       <SessionProvider>
         <QueryProvider>
-          <TwaGuard>{children}</TwaGuard>
-          <TelegramAutoLogin />
+          {/* <TwaGuard> */}
+            {children}
+          {/* </TwaGuard> */}
+          <Suspense fallback={<div>Loading...</div>}>
+            <TelegramAutoLogin />
+          </Suspense> 
           <Toaster
             position="top-center"
             toastOptions={{

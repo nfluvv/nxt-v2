@@ -18,18 +18,6 @@ export const getCurrentUser = cache(async () => {
       image: true,
       username: true,
       role: true,
-    },
-  })
-})
-
-export const getUserByUsername = cache(async (username: string) => {
-  return prisma.user.findUnique({
-    where: { username },
-    select: {
-      id: true,
-      name: true,
-      username: true,
-      image: true,
       createdAt: true,
     },
   })
@@ -51,7 +39,7 @@ export const getAllUsers = async ({
         OR: [
           { name: { contains: q, mode: "insensitive" as const } },
           { username: { contains: q, mode: "insensitive" as const } },
-          { telegramId: q }, // точное совпадение по Telegram ID
+          { telegramId: q },
         ],
       }
     : {}

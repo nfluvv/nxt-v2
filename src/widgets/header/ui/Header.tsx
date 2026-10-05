@@ -1,49 +1,19 @@
-import { Link } from "@/shared/i18n/navigation"
-
 import { getCurrentUser } from "@/entities/user/api/queries"
-import { ThemeToggle } from "@/features/toggle-theme"
-import { LanguageSwitcher } from "@/features/switch-locale"
-import { siteConfig } from "@/shared/client/config/site"
-import { Container } from "@/shared/client/ui"
-import { getTranslations } from "next-intl/server"
-import { UserMenu } from "./UserMenu"
-import { DesktopNav, MobileNav, type NavItem } from "./HeaderNav"
+import { BottomNavItems } from "./BottomNavItems"
 
 export async function Header() {
   const user = await getCurrentUser()
-  const tNav = await getTranslations("Nav")
-
-  const navItems: NavItem[] = [
-    { href: "/", label: tNav("home") },
-    { href: "/pricing", label: tNav("pricing") },
-    { href: "/about", label: tNav("about") },
-  ]
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-sm">
-      <Container className="grid h-14 grid-cols-[auto_1fr] items-center gap-x-4 sm:h-16 md:grid-cols-[1fr_auto_1fr]">
-        <div>
-          <Link
-            href={siteConfig.routes.home}
-            className="font-display shrink-0 text-base font-semibold sm:text-lg"
-          >
-            {siteConfig.name}
-          </Link>
-        </div>
-
-        <DesktopNav items={navItems} />
-
-        <div className="flex items-center gap-1 justify-self-end sm:gap-2">
-          <ThemeToggle />
-          <LanguageSwitcher />
-
-          <div className="mx-1 h-5 w-px bg-border sm:mx-2" />
-
-          {user && <UserMenu user={user} />}
-
-          <MobileNav items={navItems} label={tNav("menu")} />
-        </div>
-      </Container>
-    </header>
+    <nav
+      aria-label="Main"
+      className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/85 backdrop-blur-md"
+      style={{
+        paddingBottom:
+          "max(env(safe-area-inset-bottom), var(--tg-safe-area-inset-bottom, 0px))",
+      }}
+    >
+      <BottomNavItems isAuthed={!!user} />
+    </nav>
   )
 }
