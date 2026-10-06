@@ -27,7 +27,13 @@
     "settings": "Settings",
     "links": "Links",
     "admin": "Admin",
-    "adminSub": "Admin Panel"
+    "adminSub": "Admin Panel",
+    "subscription": "Subscription",
+    "statusFree": "Free",
+    "statusPremium": "Premium · until {date}",
+    "premiumActivated": "Premium activated",
+    "paymentFailed": "Failed to process payment",
+    "openInTelegram": "Open in Telegram"
   },
 
   "navigation": {

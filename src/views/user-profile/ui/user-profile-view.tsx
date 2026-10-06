@@ -6,6 +6,7 @@ import { LanguageSwitcher } from "@/features/switch-locale"
 import { getTranslations } from "next-intl/server"
 import { Container, SettingsGroup, SettingsRow } from "@/shared/client/ui"
 import { GitHubIcon } from "@/shared/client/ui/icons"
+import { PremiumRow } from "@/features/buy-premium"
 import { User } from 'lucide-react'
 
 export async function UserProfileView() {
@@ -20,6 +21,13 @@ export async function UserProfileView() {
         <UserProfile profile={profile} />
 
         <div className="flex flex-col gap-8 mt-8">
+          <SettingsGroup title={t("subscription")}>
+            <PremiumRow
+              premiumUntil={profile.premiumUntil?.toISOString() ?? null}
+              active={!!profile.premiumUntil && profile.premiumUntil > new Date()}
+            />
+          </SettingsGroup>
+          
           <SettingsGroup title={t("settings")}>
             <LanguageSwitcher />
           </SettingsGroup>
@@ -31,7 +39,8 @@ export async function UserProfileView() {
           )}
 
           <SettingsGroup title={t("links")}>
-            <SettingsRow icon={<GitHubIcon className="size-5" />} label="GitHub" href="https://github.com/nfluvv" />
+            <SettingsRow icon={<GitHubIcon className="size-5" />} label="GitHub" href="https://github.com/nfluvv" target="_blank" />
+            <SettingsRow icon={<GitHubIcon className="size-5" />} label="Repository" href="https://github.com/nfluvv/nxt-v2" target="_blank" />
           </SettingsGroup>
         </div>
       </Container>

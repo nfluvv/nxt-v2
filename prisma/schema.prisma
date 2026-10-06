@@ -17,8 +17,11 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  premiumUntil DateTime?
+
   @@index([name])
   @@map("users")
+  orders Order[]
 }
 
 model RoleChangeLog {
@@ -41,6 +44,29 @@ model RateLimitAttempt {
   @@index([identifier, createdAt])
   @@map("rate_limit_attempts")
 }
+
+enum OrderStatus {
+  PENDING
+  PAID
+  REFUNDED
+}
+
+model Order {
+  id        String      @id @default(cuid())
+  userId    String
+  productId String
+  stars     Int
+  status    OrderStatus @default(PENDING)
+  chargeId  String?     @unique
+  paidAt    DateTime?
+  createdAt DateTime    @default(now())
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId, createdAt])
+  @@map("orders")
+}
+
 
 enum Role {
   USER

@@ -27,7 +27,13 @@
     "settings": "Настройки",
     "links": "Ссылки",
     "admin": "Админ",
-    "adminSub": "Админ-панель"
+    "adminSub": "Админ-панель",
+    "subscription": "Подписка",
+    "statusFree": "Free",
+    "statusPremium": "Premium · до {date}",
+    "premiumActivated": "Premium активирован",
+    "paymentFailed": "Не удалось оплатить",
+    "openInTelegram": "Откройте приложение в Telegram"
   },
 
   "navigation": {

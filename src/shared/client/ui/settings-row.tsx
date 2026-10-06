@@ -18,6 +18,7 @@ type RowLinkProps = BaseProps &
 type RowButtonProps = BaseProps &
   Omit<ComponentProps<"button">, keyof BaseProps | "children"> & {
     href?: undefined
+    target?: undefined
   }
 
 type SettingsRowProps = RowLinkProps | RowButtonProps
@@ -43,7 +44,7 @@ export function SettingsRow(props: SettingsRowProps) {
 
   if (props.href) {
     return (
-      <Link className={classes} {...(rest as Omit<RowLinkProps, keyof BaseProps>)}>
+      <Link className={classes} target={props.target} {...(rest as Omit<RowLinkProps, keyof BaseProps>)}>
         {content}
       </Link>
     )

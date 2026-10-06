@@ -19,6 +19,7 @@ export const getCurrentUser = cache(async () => {
       username: true,
       role: true,
       createdAt: true,
+      premiumUntil: true,
     },
   })
 })
