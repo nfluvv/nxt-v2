@@ -22,32 +22,6 @@ export type TelegramThemeParams = {
   destructive_text_color?: string
 }
 
-type TelegramWebApp = {
-  ready: () => void
-  expand: () => void
-
-  colorScheme: ResolvedTheme
-  themeParams: TelegramThemeParams
-
-  onEvent: (
-    event: "themeChanged",
-    callback: () => void
-  ) => void
-
-  offEvent: (
-    event: "themeChanged",
-    callback: () => void
-  ) => void
-}
-
-declare global {
-  interface Window {
-    Telegram?: {
-      WebApp: TelegramWebApp
-    }
-  }
-}
-
 const STORAGE_KEY = "theme"
 
 const getSystemTheme = (): ResolvedTheme => {

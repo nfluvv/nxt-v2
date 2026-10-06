@@ -4,7 +4,7 @@ import { useEffect, useSyncExternalStore } from "react"
 
 const subscribe = () => () => {}
 const getSnapshot = () => Boolean(window.Telegram?.WebApp?.initData)
-const getServerSnapshot = () => null // unknown during SSR/hydration
+const getServerSnapshot = () => null
 
 export function TwaGuard({ children }: { children: React.ReactNode }) {
   const isTelegram = useSyncExternalStore<boolean | null>(
