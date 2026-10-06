@@ -281,10 +281,6 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
       return
     }
 
-    // ─────────────────────────────────────────────
-    // Обычный браузер
-    // ─────────────────────────────────────────────
-
     const stored = localStorage.getItem(STORAGE_KEY)
 
     const theme: Theme =
@@ -329,7 +325,6 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
   },
 
   setTheme: (theme) => {
-    // В Telegram тему контролирует Telegram.
     if (get().isTelegram) {
       return
     }

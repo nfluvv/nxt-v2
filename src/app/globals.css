@@ -74,10 +74,6 @@
   }
 }
 
-/* =========================================================
-   DEFAULT / FALLBACK THEME
-   ========================================================= */
-
 :root {
   color-scheme: light;
 
@@ -119,10 +115,6 @@
   --radius: 0.625rem;
 }
 
-/* =========================================================
-   FALLBACK DARK THEME
-   ========================================================= */
-
 .dark {
   color-scheme: dark;
 
@@ -162,10 +154,6 @@
   --subtitle: #929297;
 }
 
-/* =========================================================
-   BASE
-   ========================================================= */
-
 * {
   border-color: var(--border);
 }
@@ -195,25 +183,12 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* =========================================================
-   TELEGRAM
-   ========================================================= */
-
 html {
-  /*
-   * Telegram WebApp can change the viewport.
-   * These variables are useful if you later want
-   * to account for Telegram's safe areas.
-   */
   --tg-safe-top: env(safe-area-inset-top, 0px);
   --tg-safe-right: env(safe-area-inset-right, 0px);
   --tg-safe-bottom: env(safe-area-inset-bottom, 0px);
   --tg-safe-left: env(safe-area-inset-left, 0px);
 }
-
-/* =========================================================
-   INPUT AUTOFILL
-   ========================================================= */
 
 .dark input:-webkit-autofill,
 .dark input:-webkit-autofill:hover,
@@ -229,28 +204,16 @@ html {
     0 0 0 1px var(--border) inset;
 }
 
-/* =========================================================
-   FOCUS
-   ========================================================= */
-
 *:focus:not(:focus-visible) {
   outline: none !important;
   box-shadow: none !important;
 }
-
-/* =========================================================
-   TOAST
-   ========================================================= */
 
 .toast {
   background: var(--card);
   color: var(--card-foreground);
   border: 1px solid var(--border);
 }
-
-/* =========================================================
-   SCROLLBAR
-   ========================================================= */
 
 ::-webkit-scrollbar {
   width: 10px;
