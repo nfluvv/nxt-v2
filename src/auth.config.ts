@@ -4,7 +4,6 @@ const PUBLIC_ROUTES = ["/", "/forbidden", "/about", "/pricing", "/u"]
 
 type CheckAuthorizationParams = {
   isLoggedIn: boolean
-  role?: "USER" | "ADMIN"
   pathname: string
   locale: string
   origin: string
@@ -12,14 +11,11 @@ type CheckAuthorizationParams = {
 
 export function checkAuthorization({
   isLoggedIn,
-  role,
   pathname,
   locale,
   origin,
 }: CheckAuthorizationParams): true | Response {
-  if (pathname.startsWith("/admin") && role !== "ADMIN") {
-    return Response.redirect(new URL(`/${locale}`, origin))
-  }
+
 
   const isPublicRoute = PUBLIC_ROUTES.some(
     (route) => pathname === route || pathname.startsWith(`${route}/`)

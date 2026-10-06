@@ -1,67 +1,89 @@
 "use client"
 
-import { useLocale } from "next-intl"
+import { useState, useTransition } from "react"
+import { useLocale, useTranslations } from "next-intl"
 import { useParams } from "next/navigation"
-import { useTransition } from "react"
 import { Check, Globe } from "lucide-react"
 
 import { usePathname, useRouter } from "@/shared/i18n/navigation"
 import { routing } from "@/shared/i18n/routing"
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  SettingsRow
 } from "@/shared/client/ui"
+import { cn } from "@/shared/client/lib/utils"
 
 import { localeLabels } from "../config/locale-labels"
 
 export function LanguageSwitcher() {
+  const t = useTranslations("LanguageSwitcher")
   const locale = useLocale()
   const pathname = usePathname()
   const params = useParams()
   const router = useRouter()
+  const [open, setOpen] = useState(false)
   const [isPending, startTransition] = useTransition()
 
   const handleSelect = (nextLocale: string) => {
+    if (nextLocale === locale) {
+      setOpen(false)
+      return
+    }
+
+    window.Telegram?.WebApp?.HapticFeedback?.selectionChanged()
+
     startTransition(() => {
       router.replace(
         // @ts-expect-error -- next-intl
         { pathname, params },
         { locale: nextLocale }
       )
+      setOpen(false)
     })
   }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <button
-          type="button"
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger asChild>
+        <SettingsRow
+          icon={<Globe className="size-5" />}
+          label={t("title")}
+          value={localeLabels[locale] ?? locale.toUpperCase()}
           disabled={isPending}
-          className="group flex items-center gap-1.5 rounded-lg p-1.5 transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring/40 focus-visible:outline-none disabled:opacity-60"
-        >
-          <Globe className="size-4 text-muted-foreground" />
-          <span className="text-xs font-semibold uppercase">{locale}</span>
-        </button>
-      </DropdownMenuTrigger>
+        />
+      </DialogTrigger>
 
-      <DropdownMenuContent
-        align="end"
-        sideOffset={8}
-        className="w-40 rounded-xl border-border/70 p-1.5"
-      >
-        {routing.locales.map((loc) => (
-          <DropdownMenuItem
-            key={loc}
-            onSelect={() => handleSelect(loc)}
-            className="flex items-center justify-between"
-          >
-            <span>{localeLabels[loc] ?? loc}</span>
-            {loc === locale && <Check className="size-3.5" />}
-          </DropdownMenuItem>
-        ))}
-      </DropdownMenuContent>
-    </DropdownMenu>
+      <DialogContent className="w-[calc(100%-2rem)] max-w-sm rounded-2xl p-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+        <DialogHeader>
+          <DialogTitle>{t("title")}</DialogTitle>
+        </DialogHeader>
+
+        <ul className="flex flex-col gap-1.5">
+          {routing.locales.map((loc) => {
+            const active = loc === locale
+            return (
+              <li key={loc}>
+                <button
+                  type="button"
+                  disabled={isPending}
+                  onClick={() => handleSelect(loc)}
+                  className={cn(
+                    "flex min-h-12 w-full items-center justify-between rounded-xl px-4 text-left text-base transition-colors active:bg-muted disabled:opacity-60",
+                    active ? "bg-muted font-medium" : "bg-transparent"
+                  )}
+                >
+                  <span>{localeLabels[loc] ?? loc}</span>
+                  {active && <Check className="size-4 text-primary" />}
+                </button>
+              </li>
+            )
+          })}
+        </ul>
+      </DialogContent>
+    </Dialog>
   )
 }

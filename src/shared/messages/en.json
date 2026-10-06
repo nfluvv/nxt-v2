@@ -12,12 +12,31 @@
     "active": "Active"
   },
 
-  "profile": {
-    "lang": "Language"
+  "meta": {
+    "settingsTitle": "Settings",
+    "forbiddenTitle": "Access denied",
+    "adminTitle": "Admin panel",
+    "homeTitle": "Home",
+    "loginTitle": "Log in",
+    "registerTitle": "Sign up",
+    "userNotFound": "Uset not found"
   },
 
-  "nav": {
-    "home": "Home"
+  "profile": {
+    "lang": "Language",
+    "settings": "Settings",
+    "links": "Links",
+    "admin": "Admin",
+    "adminSub": "Admin Panel"
+  },
+
+  "navigation": {
+    "home": "Home",
+    "profile": "Profile"
+  },
+
+  "LanguageSwitcher": {
+    "title": "Choose Language"
   },
 
   "dashboard": {
@@ -42,7 +61,7 @@
     "loading": "Loading...",
     "empty": "No users found",
     "total": "Total: {total}",
-    "searchPlaceholder": "Search by name or email...",
+    "searchPlaceholder": "Search by name or telegram ID...",
     "pagination": "Page {page} of {totalPages}",
     "next": "Next"
   },

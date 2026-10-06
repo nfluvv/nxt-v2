@@ -12,12 +12,31 @@
     "active": "Активен"
   },
 
-  "profile": {
-    "lang": "Язык"
+  "meta": {
+    "settingsTitle": "Настройки",
+    "forbiddenTitle": "Доступ запрещён",
+    "adminTitle": "Админ-панель",
+    "homeTitle": "Главная",
+    "loginTitle": "Вход",
+    "registerTitle": "Регистрация",
+    "userNotFound": "Пользователь не найден"
   },
 
-  "nav": {
-    "home": "Главная"
+  "profile": {
+    "lang": "Язык",
+    "settings": "Настройки",
+    "links": "Ссылки",
+    "admin": "Админ",
+    "adminSub": "Админ-панель"
+  },
+
+  "navigation": {
+    "home": "Главная",
+    "profile": "Профиль"
+  },
+
+  "LanguageSwitcher": {
+    "title": "Выберите язык"
   },
 
   "dashboard": {
@@ -59,7 +78,7 @@
     "loading": "Загрузка...",
     "empty": "Пользователи не найдены",
     "total": "Всего: {total}",
-    "searchPlaceholder": "Поиск по имени или email...",
+    "searchPlaceholder": "Поиск по имени или telegram ID...",
     "pagination": "Страница {page} из {totalPages}",
     "next": "Вперёд"
   },

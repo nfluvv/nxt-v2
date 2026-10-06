@@ -1,7 +1,7 @@
 import { getCurrentUser } from "@/entities/user/api/queries"
 import { BottomNavItems } from "./BottomNavItems"
 
-export async function Header() {
+export async function Navigation() {
   const user = await getCurrentUser()
 
   return (

@@ -39,7 +39,7 @@ export function TelegramAutoLogin() {
 
     void (async () => {
       const initData = await getInitData();
-      if (!initData) return; // открыто не в Telegram, и это не dev
+      if (!initData) return;
 
       const res = await signIn("telegram", { initData, redirect: false });
       if (res?.error) {

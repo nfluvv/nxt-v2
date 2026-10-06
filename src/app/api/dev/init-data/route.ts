@@ -12,7 +12,7 @@ export function GET(req: Request) {
       first_name: "Dev",
       last_name: `#${id}`,
       username: `dev${id}`,
-      language_code: "ru",
+      language_code: "ru"
     }),
   });
 }

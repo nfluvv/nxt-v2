@@ -3,7 +3,7 @@ import { getMessages, setRequestLocale } from "next-intl/server"
 import { notFound } from "next/navigation"
 
 import { AppProviders } from "@/app/providers"
-import { Header } from "@/widgets/header"
+import { Navigation } from "@/widgets/navigation"
 import { routing } from "@/shared/i18n/routing"
 
 export function generateStaticParams() {
@@ -35,7 +35,7 @@ export default async function LocaleLayout({
     <NextIntlClientProvider messages={messages}>
       <AppProviders>
         {children}
-        <Header />
+        <Navigation />
       </AppProviders>
     </NextIntlClientProvider>
   )

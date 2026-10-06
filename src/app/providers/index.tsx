@@ -15,9 +15,9 @@ export function AppProviders({ children }: PropsWithChildren) {
     <ThemeProvider>
       <SessionProvider>
         <QueryProvider>
-          <TwaGuard>
+          {/* <TwaGuard> */}
             {children}
-          </TwaGuard>
+          {/* </TwaGuard> */}
           <Suspense fallback={<div>Loading...</div>}>
             <TelegramAutoLogin />
           </Suspense> 

@@ -4,12 +4,9 @@ import { Home, User } from "lucide-react"
 import { Link, usePathname } from "@/shared/i18n/navigation"
 import { siteConfig } from "@/shared/client/config/site"
 import { cn } from "@/shared/client/lib/utils"
+import { useTranslations } from "next-intl"
 
-const items = [
-  { href: siteConfig.routes.home, label: "Main", icon: Home },
-  // { href: "/admin", label: "Settings", icon: Settings },
-  { href: "/profile", label: "Profile", icon: User },
-] as const
+
 
 function haptic() {
   window.Telegram?.WebApp?.HapticFeedback?.selectionChanged()
@@ -17,6 +14,13 @@ function haptic() {
 
 export function BottomNavItems({ isAuthed }: { isAuthed: boolean }) {
   const pathname = usePathname()
+  const t = useTranslations("navigation")
+
+  const items = [
+    { href: siteConfig.routes.home, label: t("home"), icon: Home },
+    // { href: "/admin", label: t("settings"), icon: Settings },
+    { href: "/profile", label: t("profile"), icon: User },
+  ] as const
 
   const visible = isAuthed
     ? items

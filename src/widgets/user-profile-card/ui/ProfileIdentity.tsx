@@ -5,7 +5,7 @@ type ProfileIdentityProps = {
 
 export function ProfileIdentity({ name, username }: ProfileIdentityProps) {
   return (
-    <div className="mt-5">
+    <div className="mt-2">
       <div className="flex items-center gap-2">
         <h1 className="text-2xl font-bold tracking-tight">
           {name ?? "No name"}
