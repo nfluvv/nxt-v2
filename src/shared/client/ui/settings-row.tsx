@@ -44,14 +44,22 @@ export function SettingsRow(props: SettingsRowProps) {
 
   if (props.href) {
     return (
-      <Link className={classes} target={props.target} {...(rest as Omit<RowLinkProps, keyof BaseProps>)}>
+      <Link
+        className={classes}
+        target={props.target}
+        {...(rest as Omit<RowLinkProps, keyof BaseProps>)}
+      >
         {content}
       </Link>
     )
   }
 
   return (
-    <button type="button" className={classes} {...(rest as ComponentProps<"button">)}>
+    <button
+      type="button"
+      className={classes}
+      {...(rest as ComponentProps<"button">)}
+    >
       {content}
     </button>
   )

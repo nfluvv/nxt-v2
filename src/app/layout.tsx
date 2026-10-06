@@ -50,9 +50,9 @@ export default async function RootLayout({
         <div className="mx-auto min-h-screen w-full max-w-md bg-background text-foreground shadow-xl">
           {children}
         </div>
-        <Script 
-          src="https://telegram.org/js/telegram-web-app.js" 
-          strategy="beforeInteractive" 
+        <Script
+          src="https://telegram.org/js/telegram-web-app.js"
+          strategy="beforeInteractive"
         />
       </body>
     </html>

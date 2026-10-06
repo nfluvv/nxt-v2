@@ -1,8 +1,4 @@
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/shared/client/ui"
+import { Avatar, AvatarFallback, AvatarImage } from "@/shared/client/ui"
 
 import { ProfileIdentity } from "./ProfileIdentity"
 
@@ -19,7 +15,7 @@ export function UserProfile({ profile }: UserProfileProps) {
   const initial = (profile.name ?? "?").charAt(0).toUpperCase()
 
   return (
-    <div className="flex items-center flex-col text-center mt-4 overflow-hidden bg-background shadow-none border-0">
+    <div className="mt-4 flex flex-col items-center overflow-hidden border-0 bg-background text-center shadow-none">
       <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
         <Avatar className="size-24 shrink-0 rounded-full bg-background sm:size-28">
           <AvatarImage

@@ -15,12 +15,10 @@ export function AppProviders({ children }: PropsWithChildren) {
     <ThemeProvider>
       <SessionProvider>
         <QueryProvider>
-          <TwaGuard>
-            {children}
-          </TwaGuard>
+          <TwaGuard>{children}</TwaGuard>
           <Suspense fallback={<div>Loading...</div>}>
             <TelegramAutoLogin />
-          </Suspense> 
+          </Suspense>
           <Toaster
             position="top-center"
             toastOptions={{

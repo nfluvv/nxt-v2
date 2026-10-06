@@ -1,1 +1,1 @@
-export const isPremium = (u: { premiumUntil: Date | null }) => !!u.premiumUntil && u.premiumUntil > new Date();
+export const isPremium = (u: { premiumUntil: Date | null }) => !!u.premiumUntil && u.premiumUntil > new Date()

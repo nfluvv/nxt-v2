@@ -13,7 +13,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-  SettingsRow
+  SettingsRow,
 } from "@/shared/client/ui"
 import { cn } from "@/shared/client/lib/utils"
 

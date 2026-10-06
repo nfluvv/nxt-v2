@@ -8,9 +8,13 @@ type SettingsGroupProps = {
   className?: string
 }
 
-export function SettingsGroup({ title, children, className }: SettingsGroupProps) {
+export function SettingsGroup({
+  title,
+  children,
+  className,
+}: SettingsGroupProps) {
   return (
-    <section className={cn("flex flex-col gap-2 w-full", className)}>
+    <section className={cn("flex w-full flex-col gap-2", className)}>
       {title && (
         <h3 className="px-4 text-xs font-medium tracking-wide text-muted-foreground uppercase">
           {title}

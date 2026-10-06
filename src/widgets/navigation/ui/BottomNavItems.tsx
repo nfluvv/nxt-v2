@@ -6,8 +6,6 @@ import { siteConfig } from "@/shared/client/config/site"
 import { cn } from "@/shared/client/lib/utils"
 import { useTranslations } from "next-intl"
 
-
-
 function haptic() {
   window.Telegram?.WebApp?.HapticFeedback?.selectionChanged()
 }
@@ -37,13 +35,13 @@ export function BottomNavItems({ isAuthed }: { isAuthed: boolean }) {
   const count = visible.length
 
   return (
-    <ul className="relative mx-auto grid h-16 max-w-md grid-flow-col auto-cols-fr px-0">
+    <ul className="relative mx-auto grid h-16 max-w-md auto-cols-fr grid-flow-col px-0">
       <li
         aria-hidden
         className={cn(
-          "pointer-events-none absolute left-0 top-2 flex justify-center",
+          "pointer-events-none absolute top-2 left-0 flex justify-center",
           "transition-[transform,opacity] duration-300 ease-[cubic-bezier(0.34,1.3,0.64,1)] motion-reduce:transition-none",
-          activeIndex === -1 ? "opacity-0" : "opacity-100",
+          activeIndex === -1 ? "opacity-0" : "opacity-100"
         )}
         style={{
           width: `${100 / count}%`,
@@ -63,9 +61,9 @@ export function BottomNavItems({ isAuthed }: { isAuthed: boolean }) {
               onClick={haptic}
               aria-current={active ? "page" : undefined}
               className={cn(
-                "group relative flex h-full select-none flex-col items-center gap-0.5 pt-2 touch-manipulation [-webkit-tap-highlight-color:transparent]",
+                "group relative flex h-full touch-manipulation flex-col items-center gap-0.5 pt-2 select-none [-webkit-tap-highlight-color:transparent]",
                 "transition-colors duration-200",
-                active ? "text-primary" : "text-muted-foreground",
+                active ? "text-primary" : "text-muted-foreground"
               )}
             >
               <span className="flex h-8 w-14 items-center justify-center">
@@ -77,7 +75,7 @@ export function BottomNavItems({ isAuthed }: { isAuthed: boolean }) {
               <span
                 className={cn(
                   "max-w-full truncate px-1 text-[11px] leading-none",
-                  active ? "font-semibold" : "font-medium",
+                  active ? "font-semibold" : "font-medium"
                 )}
               >
                 {label}

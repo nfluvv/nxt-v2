@@ -4,7 +4,7 @@ A battle-tested, high-performance Telegram Mini Apps (TWA) framework built with 
 
 Engineered to eliminate 90% of standard Web2 infrastructure overhead. No credentials, no email verification bottlenecks, and no domain paywalls. This architecture utilizes native Telegram authentication (`initData` cryptographic validation) and integrates seamlessly with the Telegram Stars ecosystem for frictionless in-app monetization, routing payouts directly to your TON wallet via Fragment.
 
-**[🪐 Live Interactive Demo]()**
+**[🪐 Live Interactive Demo](<>)**
 
 ---
 
@@ -41,25 +41,32 @@ Engineered to eliminate 90% of standard Web2 infrastructure overhead. No credent
 ### 🚀 Production Installation
 
 #### 1. Clone the Architecture Tree
+
 ```bash
 git clone https://github.com/nfluvv/nxt-v2
 cd nxt-v2
 ```
 
 #### 2. Bootstrap Node Packages Workspace
+
 ```bash
 npm install
 ```
 
 #### 3. Establish Runtime Environment Configurations
+
 Generate your localized environmental vector configuration file:
+
 ```bash
 cp .env.example .env
 ```
+
 Open `.env` and fill the variables: active PostgreSQL deployment connection string, your Auth.js security secret hash, and the official `TELEGRAM_BOT_TOKEN` generated from `@BotFather`.
 
 #### 4. Sync Database Schemas & Structural Primitives
+
 Ensure your localized PostgreSQL daemon instance is running, then execute:
+
 ```bash
 # Generate localized type-safe Prisma client data models
 npx prisma generate
@@ -69,12 +76,15 @@ npx prisma migrate dev
 ```
 
 To visually inspect user states, review transaction records, or alter privileges manually, execute the schema client dashboard UI:
+
 ```bash
 npx prisma studio
 ```
 
 #### 5. Spin Up the Development Engine
+
 To build and test the application directly inside Telegram, make your local workspace securely reachable from the web utilizing proxies like `ngrok`:
+
 ```bash
 # Boot dev server locally (port 3000)
 npm run dev
@@ -82,6 +92,7 @@ npm run dev
 # In a separate terminal tab, hook up your secure network tunnel proxy
 npx ngrok http 3000
 ```
+
 Copy the secure `https://...ngrok-free.app` tunnel destination URL, insert it into your `.env` file under `NEXTAUTH_URL`, and drop the same URL address into your `@BotFather` Mini App endpoint configuration. Open your bot on your phone—HMR (Hot Module Replacement) updates code changes instantly.
 
 ---

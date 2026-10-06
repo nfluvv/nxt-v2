@@ -1,3 +1,3 @@
-import { DashboardView } from '@/views/dashboard'
+import { DashboardView } from "@/views/dashboard"
 
 export default DashboardView

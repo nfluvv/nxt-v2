@@ -37,7 +37,9 @@ export function PremiumRow({ premiumUntil, active }: PremiumRowProps) {
       setPending(false)
       if (status === "paid") {
         toast.success(t("premiumActivated"))
-        ;[500, 2000, 5000].forEach((ms) => setTimeout(() => router.refresh(), ms))
+        ;[500, 2000, 5000].forEach((ms) =>
+          setTimeout(() => router.refresh(), ms)
+        )
       } else if (status === "failed") {
         toast.error(t("paymentFailed"))
       }
@@ -51,7 +53,9 @@ export function PremiumRow({ premiumUntil, active }: PremiumRowProps) {
       value={
         active && until ? (
           <span className="text-amber-500">
-            {t("statusPremium", { date: format.dateTime(until, { dateStyle: "medium" }) })}
+            {t("statusPremium", {
+              date: format.dateTime(until, { dateStyle: "medium" }),
+            })}
           </span>
         ) : (
           t("statusFree")

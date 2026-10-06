@@ -13,7 +13,7 @@ const userSchema = z.object({
 
 export type TelegramUser = z.infer<typeof userSchema>
 
-const MAX_AGE_SEC = 60 * 60 
+const MAX_AGE_SEC = 60 * 60
 
 export function verifyInitData(initData: string): TelegramUser | null {
   try {
