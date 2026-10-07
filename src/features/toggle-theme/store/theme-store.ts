@@ -49,134 +49,87 @@ const applyResolvedTheme = (theme: ResolvedTheme) => {
   root.style.colorScheme = theme
 }
 
-const setCssVariable = (
-  name: string,
-  value: string | undefined
-) => {
+const setCssVariable = (name: string, value: string | undefined) => {
   if (!value) return
 
   document.documentElement.style.setProperty(name, value)
 }
 
-const applyTelegramTheme = (
-  params: TelegramThemeParams
-) => {
-  setCssVariable("--background", params.bg_color)
-  setCssVariable("--foreground", params.text_color)
+const TELEGRAM_VARS = [
+  "--background", "--foreground", "--card", "--card-foreground",
+  "--popover", "--popover-foreground", "--primary", "--primary-foreground",
+  "--secondary", "--secondary-foreground", "--muted", "--muted-foreground",
+  "--accent", "--accent-foreground", "--border", "--input", "--ring",
+  "--destructive", "--destructive-foreground",
+  "--link", "--header", "--accent-text", "--section-header", "--subtitle",
+] as const
 
-  setCssVariable(
-    "--card",
-    params.section_bg_color ?? params.bg_color
-  )
+const applyTelegramTheme = (p: TelegramThemeParams) => {
+  const root = document.documentElement
+  TELEGRAM_VARS.forEach((name) => root.style.removeProperty(name))
 
-  setCssVariable(
-    "--card-foreground",
-    params.text_color
-  )
+  const page = p.secondary_bg_color ?? p.bg_color
+  const card = p.section_bg_color ?? p.bg_color
 
-  setCssVariable(
-    "--popover",
-    params.section_bg_color ?? params.bg_color
-  )
-
-  setCssVariable(
-    "--popover-foreground",
-    params.text_color
-  )
-
-  setCssVariable(
-    "--primary",
-    params.button_color
-  )
-
-  setCssVariable(
-    "--primary-foreground",
-    params.button_text_color
-  )
-
-  setCssVariable(
-    "--secondary",
-    params.secondary_bg_color
-  )
-
-  setCssVariable(
-    "--secondary-foreground",
-    params.text_color
-  )
-
-  setCssVariable(
-    "--muted",
-    params.secondary_bg_color
-  )
-
-  setCssVariable(
-    "--muted-foreground",
-    params.hint_color
-  )
-
-  setCssVariable(
-    "--accent",
-    params.secondary_bg_color
-  )
-
-  setCssVariable(
-    "--accent-foreground",
-    params.text_color
-  )
-
-  setCssVariable(
-    "--border",
-    params.hint_color
-      ? `color-mix(in srgb, ${params.hint_color} 25%, transparent)`
+  const tint = (percent: number) =>
+    p.hint_color && card
+      ? `color-mix(in srgb, ${p.hint_color} ${percent}%, ${card})`
       : undefined
-  )
 
-  setCssVariable(
-    "--input",
-    params.hint_color
-      ? `color-mix(in srgb, ${params.hint_color} 25%, transparent)`
-      : undefined
-  )
+  const line = p.hint_color
+    ? `color-mix(in srgb, ${p.hint_color} 25%, transparent)`
+    : undefined
 
-  setCssVariable(
-    "--ring",
-    params.button_color
-  )
+  setCssVariable("--background", page)
+  setCssVariable("--foreground", p.text_color)
 
-  setCssVariable(
-    "--link",
-    params.link_color
-  )
+  setCssVariable("--card", card)
+  setCssVariable("--card-foreground", p.text_color)
+  setCssVariable("--popover", card)
+  setCssVariable("--popover-foreground", p.text_color)
 
-  setCssVariable(
-    "--header",
-    params.header_bg_color
-  )
+  setCssVariable("--primary", p.button_color)
+  setCssVariable("--primary-foreground", p.button_text_color)
 
-  setCssVariable(
-    "--accent-text",
-    params.accent_text_color
-  )
+  setCssVariable("--secondary", tint(14))
+  setCssVariable("--secondary-foreground", p.text_color)
+  setCssVariable("--muted", tint(14))
+  setCssVariable("--muted-foreground", p.hint_color)
+  setCssVariable("--accent", tint(20))
+  setCssVariable("--accent-foreground", p.text_color)
 
-  setCssVariable(
-    "--section-header",
-    params.section_header_text_color
-  )
+  setCssVariable("--border", line)
+  setCssVariable("--input", line)
+  setCssVariable("--ring", p.button_color)
 
-  setCssVariable(
-    "--subtitle",
-    params.subtitle_text_color
-  )
+  setCssVariable("--destructive", p.destructive_text_color)
+  setCssVariable("--destructive-foreground", p.button_text_color)
 
-  setCssVariable(
-    "--destructive",
-    params.destructive_text_color
-  )
+  setCssVariable("--link", p.link_color)
+  setCssVariable("--header", p.header_bg_color)
+  setCssVariable("--accent-text", p.accent_text_color)
+  setCssVariable("--section-header", p.section_header_text_color)
+  setCssVariable("--subtitle", p.subtitle_text_color)
+}
 
-  setCssVariable(
-    "--destructive-foreground",
-    params.button_text_color
-  )
+const syncTelegramChrome = (webApp: TelegramWebApp) => {
+  try {
+    if (webApp.isVersionAtLeast("6.1")) {
+      webApp.setHeaderColor("secondary_bg_color")
+      webApp.setBackgroundColor("secondary_bg_color")
+    }
+    if (webApp.isVersionAtLeast("7.10")) {
+      webApp.setBottomBarColor("secondary_bg_color")
+    }
+  } catch {}
+}
+
+// поэтому "мы в Telegram" определяем по initData / platform
+const getTelegramWebApp = (): TelegramWebApp | null => {
+  const webApp = window.Telegram?.WebApp
+  if (!webApp) return null
+
+  return webApp.initData || webApp.platform !== "unknown" ? webApp : null
 }
 
 type ThemeState = {
@@ -213,11 +166,15 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
       return
     }
 
-    const webApp = window.Telegram?.WebApp
+    // Защита от двойного вызова (React Strict Mode в dev)
+    if (get().initialized) {
+      return
+    }
+
+    const webApp = getTelegramWebApp()
 
     if (webApp) {
       webApp.ready()
-
       webApp.expand()
 
       const params = webApp.themeParams
@@ -225,6 +182,7 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
 
       applyTelegramTheme(params)
       applyResolvedTheme(resolvedTheme)
+      syncTelegramChrome(webApp)
 
       set({
         theme: "system",
@@ -240,6 +198,7 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
 
         applyTelegramTheme(nextParams)
         applyResolvedTheme(nextTheme)
+        syncTelegramChrome(webApp)
 
         set({
           resolvedTheme: nextTheme,
@@ -247,10 +206,7 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
         })
       }
 
-      webApp.onEvent(
-        "themeChanged",
-        themeChangedHandler
-      )
+      webApp.onEvent("themeChanged", themeChangedHandler)
 
       return
     }
@@ -258,9 +214,7 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
     const stored = localStorage.getItem(STORAGE_KEY)
 
     const theme: Theme =
-      stored === "light" ||
-      stored === "dark" ||
-      stored === "system"
+      stored === "light" || stored === "dark" || stored === "system"
         ? stored
         : "system"
 
@@ -276,26 +230,10 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
       initialized: true,
     })
 
-    if (theme === "system") {
-      mediaQuery = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      )
-
-      mediaQueryHandler = () => {
-        const nextTheme = getSystemTheme()
-
-        applyResolvedTheme(nextTheme)
-
-        set({
-          resolvedTheme: nextTheme,
-        })
-      }
-
-      mediaQuery.addEventListener(
-        "change",
-        mediaQueryHandler
-      )
-    }
+    // Слушатель ставим всегда: syncWithSystem сам проверит, выбрана ли "system"
+    mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+    mediaQueryHandler = () => get().syncWithSystem()
+    mediaQuery.addEventListener("change", mediaQueryHandler)
   },
 
   setTheme: (theme) => {
@@ -336,28 +274,18 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
   destroy: () => {
     const webApp = window.Telegram?.WebApp
 
-    if (
-      webApp &&
-      themeChangedHandler
-    ) {
-      webApp.offEvent(
-        "themeChanged",
-        themeChangedHandler
-      )
+    if (webApp && themeChangedHandler) {
+      webApp.offEvent("themeChanged", themeChangedHandler)
     }
 
-    if (
-      mediaQuery &&
-      mediaQueryHandler
-    ) {
-      mediaQuery.removeEventListener(
-        "change",
-        mediaQueryHandler
-      )
+    if (mediaQuery && mediaQueryHandler) {
+      mediaQuery.removeEventListener("change", mediaQueryHandler)
     }
 
     themeChangedHandler = null
     mediaQuery = null
     mediaQueryHandler = null
+
+    set({ initialized: false })
   },
 }))
