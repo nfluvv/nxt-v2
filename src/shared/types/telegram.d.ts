@@ -1,4 +1,4 @@
-export {}
+import type { WebApp } from "@twa-dev/types"
 
 declare global {
   interface TelegramThemeColors {
@@ -38,6 +38,10 @@ declare global {
   }
 
   interface Window {
-    Telegram?: { WebApp?: TelegramWebApp }
+    Telegram?: {
+      WebApp?: WebApp
+    },
   }
 }
+
+export {}
