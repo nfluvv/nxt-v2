@@ -33,14 +33,14 @@ declare global {
     offEvent(event: string, handler: () => void): void
     openInvoice(
       url: string,
-      callback?: (status: "paid" | "cancelled" | "failed" | "pending") => void,
+      callback?: (status: "paid" | "cancelled" | "failed" | "pending") => void
     ): void
   }
 
   interface Window {
     Telegram?: {
       WebApp?: WebApp
-    },
+    }
   }
 }
 

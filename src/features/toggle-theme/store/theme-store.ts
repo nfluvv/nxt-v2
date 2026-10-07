@@ -56,12 +56,30 @@ const setCssVariable = (name: string, value: string | undefined) => {
 }
 
 const TELEGRAM_VARS = [
-  "--background", "--foreground", "--card", "--card-foreground",
-  "--popover", "--popover-foreground", "--primary", "--primary-foreground",
-  "--secondary", "--secondary-foreground", "--muted", "--muted-foreground",
-  "--accent", "--accent-foreground", "--border", "--input", "--ring",
-  "--destructive", "--destructive-foreground",
-  "--link", "--header", "--accent-text", "--section-header", "--subtitle",
+  "--background",
+  "--foreground",
+  "--card",
+  "--card-foreground",
+  "--popover",
+  "--popover-foreground",
+  "--primary",
+  "--primary-foreground",
+  "--secondary",
+  "--secondary-foreground",
+  "--muted",
+  "--muted-foreground",
+  "--accent",
+  "--accent-foreground",
+  "--border",
+  "--input",
+  "--ring",
+  "--destructive",
+  "--destructive-foreground",
+  "--link",
+  "--header",
+  "--accent-text",
+  "--section-header",
+  "--subtitle",
 ] as const
 
 const applyTelegramTheme = (p: TelegramThemeParams) => {
@@ -166,7 +184,6 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
       return
     }
 
-    // Защита от двойного вызова (React Strict Mode в dev)
     if (get().initialized) {
       return
     }
@@ -230,7 +247,6 @@ export const useThemeStore = create<ThemeState>((set, get) => ({
       initialized: true,
     })
 
-    // Слушатель ставим всегда: syncWithSystem сам проверит, выбрана ли "system"
     mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
     mediaQueryHandler = () => get().syncWithSystem()
     mediaQuery.addEventListener("change", mediaQueryHandler)
