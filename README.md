@@ -1,121 +1,227 @@
-# ⚡ nxt-v2 — Production-Ready Telegram Web Apps (TWA) Starter
+<h1 align="center">⚡ nxt-v2</h1>
 
-A battle-tested, high-performance Telegram Mini Apps (TWA) framework built with **Next.js 16 (App Router)**, **Auth.js v5**, **Prisma ORM**, **PostgreSQL**, and structured around **Feature-Sliced Design (FSD)**.
+<p align="center">
+A production-ready starter for <b>Telegram Mini Apps (TWA)</b> built with <b>Next.js 16</b>, <b>Auth.js v5</b>, <b>Prisma</b>, <b>PostgreSQL</b>, and <b>Feature-Sliced Design (FSD)</b>.
+</p>
 
-Engineered to eliminate 90% of standard Web2 infrastructure overhead. No credentials, no email verification bottlenecks, and no domain paywalls. This architecture utilizes native Telegram authentication (`initData` cryptographic validation) and integrates seamlessly with the Telegram Stars ecosystem for frictionless in-app monetization, routing payouts directly to your TON wallet via Fragment.
-
-**[🪐 Live Demo](https://t.me/nxt_v2_bot/nxtemplate)**
-
----
-
-### 🛠 Engineered Features
-
-- **Seamless Crypto-Validated Telegram Auth**
-- **Native Telegram Stars Monetization**
-- **FSD-Compliant Flat Routing**
-- **Dynamic Contextual UI/UX Sync**
-- **Haptic & Interface Acceleration**
-- **Enterprise-Grade TWA Admin Panel**
-- **Zero-Infrastructure Rate Limiting**
+<p align="center">
+<a href="https://t.me/nxt_v2_bot/nxtemplate"><b>🪐 Live Demo</b></a>
+</p>
 
 ---
 
-### 🪐 Technical Stack
+> [!NOTE]
+> This template removes most of the usual Web2 setup. No passwords, no email verification, and no domain payments. Users log in with native Telegram auth (`initData` cryptographic validation).
 
-- **Framework Core:** Next.js 16 (App Router)
-- **UI Runtime Environment:** React 19
-- **TWA Context Type Drivers:** `@types/telegram-webapp` (Strict typings configuration)
-- **Authentication Engine:** Auth.js v5 / NextAuth.js v5 Custom Provider
-- **Database Engine:** PostgreSQL
-- **Data Modeling Layer:** Prisma ORM
-- **Application State Store:** Zustand
-- **Asynchronous Server State:** TanStack Query v5 (React Query)
-- **Validation Layer:** React Hook Form + Zod validation schemas
-- **Component Foundations:** shadcn/ui + Radix UI Primitives
-- **Styling Architecture:** Tailwind CSS 4 (Next-gen compiler infrastructure)
-- **Test Suite Framework:** Vitest simulation space
-- **CI/CD Pipeline Matrix:** GitHub Actions automation workflows
+> [!IMPORTANT]
+> The app supports **Telegram Stars** for in-app payments. Payouts go straight to your TON wallet through Fragment.
+
+> [!TIP]
+> The project uses **Feature-Sliced Design (FSD)**. Each layer has a clear job, so the code stays clean as the app grows.
 
 ---
 
-### 🚀 Production Installation
+## ✨ Features
 
-#### 1. Clone the Architecture Tree
+<table>
+  <thead>
+    <tr>
+      <th width="280" align="left">Feature</th>
+      <th align="left">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="280"><b>Telegram Auth</b></td>
+      <td>Secure login with cryptographic validation of Telegram data.</td>
+    </tr>
+    <tr>
+      <td width="280"><b>Telegram Stars</b></td>
+      <td>Native in-app payments and monetization.</td>
+    </tr>
+    <tr>
+      <td width="280"><b>Flat FSD Routing</b></td>
+      <td>Simple routing that follows FSD rules.</td>
+    </tr>
+    <tr>
+      <td width="280"><b>Dynamic UI Sync</b></td>
+      <td>The interface follows Telegram theme colors.</td>
+    </tr>
+    <tr>
+      <td width="280"><b>Haptic Feedback</b></td>
+      <td>Fast, smooth interface with native touch feedback.</td>
+    </tr>
+    <tr>
+      <td width="280"><b>Admin Panel</b></td>
+      <td>Enterprise-level admin panel inside Telegram.</td>
+    </tr>
+    <tr>
+      <td width="280"><b>Rate Limiting</b></td>
+      <td>No extra infrastructure needed.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## 🛠 Tech Stack
+
+<table>
+  <thead>
+    <tr>
+      <th width="220" align="left">Area</th>
+      <th align="left">Tools</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td width="220"><b>Framework</b></td>
+      <td>Next.js 16 (App Router)</td>
+    </tr>
+    <tr>
+      <td width="220"><b>UI</b></td>
+      <td>React 19</td>
+    </tr>
+    <tr>
+      <td width="220"><b>Telegram Types</b></td>
+      <td><code>@types/telegram-webapp</code> (strict typing)</td>
+    </tr>
+    <tr>
+      <td width="220"><b>Authentication</b></td>
+      <td>Auth.js v5 with a custom provider</td>
+    </tr>
+    <tr>
+      <td width="220"><b>Database & ORM</b></td>
+      <td>PostgreSQL, Prisma</td>
+    </tr>
+    <tr>
+      <td width="220"><b>State</b></td>
+      <td>Zustand (client), TanStack Query v5 (server)</td>
+    </tr>
+    <tr>
+      <td width="220"><b>Forms</b></td>
+      <td>React Hook Form + Zod</td>
+    </tr>
+    <tr>
+      <td width="220"><b>UI Components</b></td>
+      <td>shadcn/ui + Radix UI</td>
+    </tr>
+    <tr>
+      <td width="220"><b>Styling</b></td>
+      <td>Tailwind CSS 4</td>
+    </tr>
+    <tr>
+      <td width="220"><b>Testing & CI</b></td>
+      <td>Vitest, GitHub Actions</td>
+    </tr>
+    <tr>
+      <td width="220"><b>Architecture</b></td>
+      <td>Feature-Sliced Design</td>
+    </tr>
+  </tbody>
+</table>
+
+---
+
+## 🚀 Installation
+
+<details>
+<summary><b>Step-by-step guide</b></summary>
+
+<br>
+
+**1. Clone the repository**
 
 ```bash
 git clone https://github.com/nfluvv/nxt-v2
 cd nxt-v2
 ```
 
-#### 2. Bootstrap Node Packages Workspace
+**2. Install dependencies**
 
 ```bash
 npm install
 ```
 
-#### 3. Establish Runtime Environment Configurations
-
-Generate your localized environmental vector configuration file:
+**3. Set up environment variables**
 
 ```bash
 cp .env.example .env
 ```
 
-Open `.env` and fill the variables: active PostgreSQL deployment connection string, your Auth.js security secret hash, and the official `TELEGRAM_BOT_TOKEN` generated from `@BotFather`.
+Fill in the values in `.env`: PostgreSQL connection string, Auth.js secret, and `TELEGRAM_BOT_TOKEN` from `@BotFather`.
 
-#### 4. Sync Database Schemas & Structural Primitives
+**4. Set up the database**
 
-Ensure your localized PostgreSQL daemon instance is running, then execute:
+Make sure PostgreSQL is running, then run:
 
 ```bash
-# Generate localized type-safe Prisma client data models
 npx prisma generate
-
-# Create and deploy your local development schema migrations
 npx prisma migrate dev
 ```
 
-To visually inspect user states, review transaction records, or alter privileges manually, execute the schema client dashboard UI:
+**5. Start the dev server**
+
+To test the app inside Telegram, you need a public HTTPS URL. Use a tunnel like `ngrok`:
+
+```bash
+# Start the dev server (port 3000)
+npm run dev
+
+# In a second terminal, start the tunnel
+npx ngrok http 3000
+```
+
+Copy the `https://...ngrok-free.app` URL. Then:
+
+1. Add it to `.env` as `NEXTAUTH_URL`.
+2. Set the same URL as the Mini App link in `@BotFather`.
+3. Open your bot on your phone. HMR updates your code instantly.
+
+</details>
+
+<details>
+<summary><b>Prisma Studio (database viewer)</b></summary>
+
+<br>
+
+Use it to check users, view transactions, or change roles by hand:
 
 ```bash
 npx prisma studio
 ```
 
-#### 5. Spin Up the Development Engine
-
-To build and test the application directly inside Telegram, make your local workspace securely reachable from the web utilizing proxies like `ngrok`:
-
-```bash
-# Boot dev server locally (port 3000)
-npm run dev
-
-# In a separate terminal tab, hook up your secure network tunnel proxy
-npx ngrok http 3000
-```
-
-Copy the secure `https://...ngrok-free.app` tunnel destination URL, insert it into your `.env` file under `NEXTAUTH_URL`, and drop the same URL address into your `@BotFather` Mini App endpoint configuration. Open your bot on your phone—HMR (Hot Module Replacement) updates code changes instantly.
+</details>
 
 ---
 
-### 🏗 Architecture & Codebase Topology
+## 🏗 Architecture
 
-The code scales natively relying tightly on the strict **Feature-Sliced Design (FSD)** paradigm.
+> [!TIP]
+> Each layer can only import from the layers below it. This keeps the code simple to read and easy to scale.
+
+<details>
+<summary><b>Project structure</b></summary>
+
+<br>
 
 ```text
 src/
-├── app/          # Global entry points, providers mapping, styling assets, and app layouts
-├── views/        # Screen-level composition architectures and main app view layers
-├── widgets/      # Compound reusable interface compounds connecting features and domains
-├── features/     # Encapsulated user mutations, invoice triggers, and contextual actions
-├── entities/     # Decoupled domain models, Prisma engine queries, and schema-level state blocks
-├── shared/       # Reusable agnostic tools: UI Kit, TWA SDK Hooks, and network client engines
-└── auth.ts       # Central runtime logic handling the custom cryptographic TWA data validator
+├── app/          # Entry points, providers, styles, and layouts
+├── views/        # Screen-level compositions
+├── widgets/      # Reusable UI blocks that connect features and entities
+├── features/     # User actions, payments, and business logic
+├── entities/     # Domain models, Prisma queries, and state
+├── shared/       # UI kit, TWA SDK hooks, and API clients
+└── auth.ts       # Custom Telegram data validation for login
 
-app/              # Next.js physical file-system localization routing matrix
+app/              # Next.js routing layer
 ```
+
+</details>
 
 ---
 
-### 💰 Core License
+## 💰 License
 
-- Open-source software deployed under the **Apache 2.0 License**. Full legal compliance text is verified in the repository tree.
+Released under the **Apache 2.0 License**. The full text is in the repository.
