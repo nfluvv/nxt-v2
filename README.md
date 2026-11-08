@@ -4,19 +4,19 @@ A battle-tested, high-performance Telegram Mini Apps (TWA) framework built with 
 
 Engineered to eliminate 90% of standard Web2 infrastructure overhead. No credentials, no email verification bottlenecks, and no domain paywalls. This architecture utilizes native Telegram authentication (`initData` cryptographic validation) and integrates seamlessly with the Telegram Stars ecosystem for frictionless in-app monetization, routing payouts directly to your TON wallet via Fragment.
 
-**[🪐 Live Interactive Demo](https://t.me/nxt_v2_bot/nxtemplate)**
+**[🪐 Live Demo](https://t.me/nxt_v2_bot/nxtemplate)**
 
 ---
 
 ### 🛠 Engineered Features
 
-- **Seamless Crypto-Validated Auth** — Zero credentials or traditional OAuth screens. Instantly decodes, parses, and cryptographically validates `window.Telegram.WebApp.initData` on the backend using your Bot Token via Node's native `crypto` module.
-- **Native Telegram Stars Monetization** — Built-in integration with the Telegram Stars SDK. Generates native invoice links via the Bot API and handles secure asynchronous checkout webhooks (`pre_checkout_query` and `successful_payment`) to dynamically toggle user privilege states in PostgreSQL.
-- **FSD-Compliant Flat Routing** — Simplified, high-performance routing matrix tailored for single-tenant TWA viewports. Completely strips out redundant Web2 route groups (`public`/`protected`) in favor of unified, centralized page topologies.
-- **Dynamic Contextual UI/UX Sync** — Injected global hook listeners parsing `themeParams` from the Telegram window context. Automatically adapts components to match the active user's client theme configuration.
-- **Haptic & Interface Acceleration** — Low-latency native mobile features integrated out of the box, utilizing Telegram's `HapticFeedback` triggers and viewport management methods (`ready()`, `expand()`).
-- **Enterprise-Grade TWA Admin Panel** — Server-side management hub leveraging optimized cursor-based pagination, structural profile queries, granular administrative roles, and unalterable operation logs.
-- **Zero-Infrastructure Rate Limiting** — In-house Token-Bucket protection layer running natively inside PostgreSQL to guarantee total route defense without spun-up Redis clusters.
+- **Seamless Crypto-Validated Telegram Auth**
+- **Native Telegram Stars Monetization**
+- **FSD-Compliant Flat Routing**
+- **Dynamic Contextual UI/UX Sync**
+- **Haptic & Interface Acceleration**
+- **Enterprise-Grade TWA Admin Panel**
+- **Zero-Infrastructure Rate Limiting**
 
 ---
 
