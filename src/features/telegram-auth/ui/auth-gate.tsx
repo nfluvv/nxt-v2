@@ -23,8 +23,8 @@ export function AuthGate() {
           </p>
         </>
       ) : (
-        <main>
-          <Container className="flex items-center justify-center">
+        <main className="pb-0!">
+          <Container className="flex min-h-screen items-center justify-center">
             <Loader />
           </Container>
         </main>
