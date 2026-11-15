@@ -47,9 +47,7 @@ export default async function RootLayout({
         <title>{siteConfig.name}</title>
       </head>
       <body>
-        <div className="mx-auto min-h-screen w-full max-w-md bg-background text-foreground shadow-xl">
-          {children}
-        </div>
+        {children}
         <Script
           src="https://telegram.org/js/telegram-web-app.js"
           strategy="beforeInteractive"

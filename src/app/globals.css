@@ -77,7 +77,7 @@
 :root {
   color-scheme: light;
 
-  --background: #f8f8f8;
+  --bottom-nav-height: 4rem --background: #f8f8f8;
   --foreground: #18181b;
 
   --card: #ffffff;
@@ -152,6 +152,8 @@
   --accent-text: #6ab3f2;
   --section-header: #6ab3f2;
   --subtitle: #929297;
+
+  --bottom-nav-height: 4rem;
 }
 
 * {
@@ -166,6 +168,10 @@ body {
 
 html {
   color-scheme: light;
+}
+
+main {
+  padding-bottom: 18px;
 }
 
 html.dark {
@@ -254,4 +260,9 @@ html {
       )
       transparent;
   }
+}
+
+a,
+button {
+  cursor: pointer;
 }

@@ -1,7 +1,6 @@
-import { notFound } from "next/navigation"
-
 import { getCurrentUser } from "@/entities/user/api/queries"
 import { UserProfile } from "@/widgets/user-profile-card"
+import { AuthGate } from "@/features/telegram-auth"
 import { LanguageSwitcher } from "@/features/switch-locale"
 import { getTranslations } from "next-intl/server"
 import { Container, SettingsGroup, SettingsRow } from "@/shared/client/ui"
@@ -10,23 +9,21 @@ import { PremiumRow } from "@/features/buy-premium"
 import { User } from "lucide-react"
 
 export async function UserProfileView() {
-  const profile = await getCurrentUser()
+  const user = await getCurrentUser()
   const t = await getTranslations("profile")
 
-  if (!profile) notFound()
+  if (!user) return <AuthGate />
 
   return (
     <main>
       <Container>
-        <UserProfile profile={profile} />
+        <UserProfile profile={user} />
 
         <div className="mt-8 flex flex-col gap-8">
           <SettingsGroup title={t("subscription")}>
             <PremiumRow
-              premiumUntil={profile.premiumUntil?.toISOString() ?? null}
-              active={
-                !!profile.premiumUntil && profile.premiumUntil > new Date()
-              }
+              premiumUntil={user.premiumUntil?.toISOString() ?? null}
+              active={!!user.premiumUntil && user.premiumUntil > new Date()}
             />
           </SettingsGroup>
 
@@ -34,7 +31,7 @@ export async function UserProfileView() {
             <LanguageSwitcher />
           </SettingsGroup>
 
-          {profile.role === "ADMIN" && (
+          {user.role === "ADMIN" && (
             <SettingsGroup title={t("admin")}>
               <SettingsRow
                 icon={<User className="size-5" />}

@@ -1,6 +1,9 @@
 "use client"
 
-import { useEffect, useSyncExternalStore } from "react"
+import { useSyncExternalStore } from "react"
+import { AppLoading } from "./app-loading"
+
+const IsDev = process.env.NODE_ENV === "development"
 
 const subscribe = () => () => {}
 const getSnapshot = () => Boolean(window.Telegram?.WebApp?.initData)
@@ -13,15 +16,11 @@ export function TwaGuard({ children }: { children: React.ReactNode }) {
     getServerSnapshot
   )
 
-  useEffect(() => {
-    if (isTelegram) {
-      const tg = window.Telegram!.WebApp
-      tg?.ready()
-      tg?.expand()
-    }
-  }, [isTelegram])
+  if (IsDev) return <>{children}</>
 
-  if (isTelegram === null) return <div>Loading...</div>
+  if (isTelegram === null) {
+    return <AppLoading />
+  }
 
   if (!isTelegram) {
     return (

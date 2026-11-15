@@ -9,6 +9,7 @@ import { QueryProvider } from "./query-provider"
 import { ThemeProvider } from "./theme-provider"
 import { TwaGuard } from "./twa-guard"
 import { TelegramAutoLogin } from "./telegram-auto-login"
+import { AppLoading } from "./app-loading"
 
 export function AppProviders({ children }: PropsWithChildren) {
   return (
@@ -16,7 +17,7 @@ export function AppProviders({ children }: PropsWithChildren) {
       <SessionProvider>
         <QueryProvider>
           <TwaGuard>{children}</TwaGuard>
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<AppLoading />}>
             <TelegramAutoLogin />
           </Suspense>
           <Toaster

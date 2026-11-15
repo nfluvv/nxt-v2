@@ -6,7 +6,20 @@ import { useSearchParams } from "next/navigation"
 import { useRouter } from "@/shared/i18n/navigation"
 
 const safeNext = (v: string | null) =>
-  v && v.startsWith("/") && !v.startsWith("//") ? v : "/dashboard"
+  v && v.startsWith("/") && !v.startsWith("//") ? v : null
+
+const HANDLED_KEY = "startParamHandled"
+
+function getStartTarget(): string | null {
+  if (sessionStorage.getItem(HANDLED_KEY)) return null
+
+  const p = window.Telegram?.WebApp?.initDataUnsafe?.start_param
+  const match = p ? /^deck_([A-Za-z0-9]{10,40})$/.exec(p) : null
+  if (!match) return null
+
+  sessionStorage.setItem(HANDLED_KEY, "1")
+  return `/decks/${match[1]}`
+}
 
 async function getInitData(): Promise<string | null> {
   const real = window.Telegram?.WebApp?.initData
@@ -16,7 +29,6 @@ async function getInitData(): Promise<string | null> {
     const fromUrl = new URLSearchParams(location.search).get("mockUser")
     if (fromUrl) localStorage.setItem("mockUser", fromUrl)
     const id = localStorage.getItem("mockUser") ?? "1"
-
     const res = await fetch(`/api/dev/init-data?id=${id}`)
     return (await res.json()).initData
   }
@@ -30,12 +42,8 @@ export function TelegramAutoLogin() {
   const started = useRef(false)
 
   useEffect(() => {
-    window.Telegram?.WebApp?.ready()
-    window.Telegram?.WebApp?.expand()
-
     if (status === "loading" || started.current) return
     started.current = true
-    const wasLoggedIn = status === "authenticated"
 
     void (async () => {
       const initData = await getInitData()
@@ -46,8 +54,10 @@ export function TelegramAutoLogin() {
         started.current = false
         return
       }
-      if (wasLoggedIn) router.refresh()
-      else router.replace(next)
+
+      const target = next ?? getStartTarget()
+      if (target) router.replace(target)
+      else router.refresh()
     })()
   }, [status, router, next])
 
