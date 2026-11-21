@@ -224,4 +224,4 @@ app/              # Next.js routing layer
 
 ## 💰 License
 
-Released under the **Apache 2.0 License**. The full text is in the repository.
+Released under the **MIT License**. The full text is in the repository.
